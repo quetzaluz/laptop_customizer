@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Customize from './Customize.js'
 import Costs from './Costs.js';
+import Total from './Total.js';
 import './App.css';
 
 // Normalizes string as a slug - a string that is safe to use
@@ -69,13 +70,8 @@ class App extends Component {
           </form>
           <section className="main__summary">
             <h2>Your cart</h2>
-           <Costs {summary}/>
-            <div className="summary__total">
-              <div className="summary__total__label">Total</div>
-              <div className="summary__total__value">
-                {USCurrencyFormat.format(total)}
-              </div>
-            </div>
+           <Costs />
+           <Total/>
           </section>
         </main>
       </div>
