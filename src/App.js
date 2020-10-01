@@ -54,9 +54,9 @@ class App extends Component {
       0
     );
 
-    const summary = Object.keys(this.state.selected).map((feature, idx) => {
+    return Object.keys(this.state.selected).map((feature, idx) => {
       const featureHash = feature + '-' + idx;
-      const selectedOption = this.state.selected[feature]});
+      const selectedOption = this.state.selected[feature]
 
     return (
       <div className="App">
@@ -66,16 +66,23 @@ class App extends Component {
         <main>
           <form className="main__form">
             <h2>Customize your laptop</h2>
-           <Customize feature={this.state.feature}/>
+           <Customize feature={this.state.feature}
+                      updateFeature={this.updateFeature}
+                      selected={this.state.selected}
+                      currencyFormat={USCurrencyFormat}/>
           </form>
           <section className="main__summary">
             <h2>Your cart</h2>
-           <Costs />
-           <Total/>
+           <Costs featureHash={featureHash}
+                  selectedOption={selectedOption}
+                  feature={feature}
+                  currencyFormat={USCurrencyFormat} />
+           <Total total={total}
+                  currencyFormat={USCurrencyFormat}/>
           </section>
         </main>
       </div>
-    );
+    )});
   }
 }
 
