@@ -66,10 +66,12 @@ class App extends Component {
         <main>
           <form className="main__form">
             <h2>Customize your laptop</h2>
-           <Customize feature={this.state.feature}
-                      updateFeature={this.updateFeature}
-                      selected={this.state.selected}
-                      currencyFormat={USCurrencyFormat}/>
+           <Customize 
+              features={this.props.features}
+              feature={selectedOption}
+              updateFeature={this.updateFeature}
+              selected={feature}
+              currencyFormat={USCurrencyFormat}/>
           </form>
           <section className="main__summary">
             <h2>Your cart</h2>

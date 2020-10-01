@@ -4,19 +4,17 @@ import slugify from 'slugify';
 
 class Customize extends Component{
     render() {
-        return Object.keys(this.props.feature).map((feature, idx) => {
-          const featureHash = feature + '-' + idx;
-          const options = this.props.features[feature].map(item => {
-            const itemHash = slugify(JSON.stringify(item));
+          const options = this.props.features[this.props.selected].map(item => {
+            const itemHash = slugify(JSON.stringify(item.name));
             return (
               <div key={itemHash} className="feature__item">
                 <input
-                  type="radio"
+                  type="radio"f
                   id={itemHash}
                   className="feature__option"
-                  name={slugify(feature)}
-                  checked={item.name === this.props.selected[feature].name}
-                  onChange={e => this.props.updateFeature(feature, item)}
+                  name={slugify(item.name)}
+                  checked={item.name === this.props.features[this.props.selected].name}
+                  onChange={e => this.props.updateFeature(this.props.feature, item)}
                 />
                 <label htmlFor={itemHash} className="feature__label">
                   {item.name} ({this.props.currencyFormat.format(item.cost)})
@@ -26,15 +24,14 @@ class Customize extends Component{
           });
     
           return (
-            <fieldset className="feature" key={featureHash}>
+            <fieldset className="feature">
               <legend className="feature__name">
-                <h3>{feature}</h3>
+                <h3>{this.props.feature.name}</h3>
               </legend>
               {options}
             </fieldset>
           );
         }
-        );}
 }
     
         
